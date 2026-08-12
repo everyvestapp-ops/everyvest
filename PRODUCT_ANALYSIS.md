@@ -115,7 +115,7 @@ Important side effect: nearly every mitigation adds a schema field (canonical ad
 ### Opportunities
 - **The RWA market is growing fast** (tokenized gold, bonds, real estate) while retail remains without an entry tool — the gap this product occupies.
 - **Existing tools are locked on institutions** — no player has built the retail layer, and the retail monitoring layer looks open (Forta works at the protocol level).
-- **A diverse future revenue model** in the G2/Glassdoor style: verified issuer profiles, per-lead referrals on 🟡 tokens, B2B/API, a retail "Guardian" subscription.
+- **A diverse future revenue model** in the G2/Glassdoor style: verified issuer profiles, per-lead referrals on 🟡 tokens, B2B/API, a retail "Guardian" subscription — plus (decided 2026-08-12) a **uniform, fully disclosed purchase fee** on direct buys of 🟢 commodity-backed tokens in phase 3. The neutrality principle, sharpened: we never earn *differently* depending on what you buy (no per-asset spread, no recommendations, the "when the ETF wins" row stays) — but earning from the act of buying itself is legitimate. Securities-like assets (bonds) remain catalog-only: no buy button, no fee — and are droppable entirely if legal review requires.
 - **Every newly mapped domain widens the moat:** a compounding effect of the schema across domains.
 
 ### Threats
