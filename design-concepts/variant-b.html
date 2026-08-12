@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everyvest — The flexibility of crypto, anchored in the real world</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#93C5FD; --primary-strong:#1E3A8A; --ink:#F8FAFC; --cta:#F59E0B; --cta-hover:#FBBF24; --on-cta:#0F172A;
+    --bg:#0B1220; --surface:#151E31; --text:#F1F5F9; --text2:#A3B0C5;
+    --border:#263349; --danger:#F87171;
+    --green:#34D399; --green-bg:#0B2B22; --amber:#FCD34D; --amber-bg:#2E2508; --red:#F87171; --red-bg:#341418;
+    --shadow:0 1px 3px rgba(0,0,0,.45),0 4px 16px rgba(0,0,0,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Source Sans 3',sans-serif;font-size:16px;line-height:1.55;color:var(--text);background:var(--bg);padding-bottom:76px}
+  h1,h2,h3{font-family:'Lexend',sans-serif;line-height:1.2;color:var(--ink)}
+  h1{font-size:30px;font-weight:700;line-height:1.15}
+  h2{font-size:24px;font-weight:600}
+  h3{font-size:17px;font-weight:600}
+  .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  section{padding:44px 0}
+  .sub{color:var(--text2);font-size:16.5px;margin-top:10px}
+  header{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:52px}
+  .logo{font-family:'Lexend',sans-serif;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+  .logo span{color:var(--cta)}
+  .asof-top{font-size:12.5px;color:var(--text2)}
+  .headcta{display:none}
+  @media(min-width:768px){.headcta{display:inline-block;font-size:14px;font-weight:600;color:var(--on-cta);background:var(--cta);text-decoration:none;padding:10px 16px;border-radius:10px}.headcta:hover{background:var(--cta-hover)}}
+  .tab:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid rgba(147,197,253,.45);outline-offset:2px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;font-size:13px;color:var(--text2)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:999px;flex:none}
+  /* hero */
+  .hero{padding:36px 0 28px;text-align:left}
+  .eyebrow{color:var(--primary);font-weight:600;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+  /* tabs */
+  .tabs{display:flex;gap:8px;margin:24px 0 14px;overflow-x:auto}
+  .tab{flex:none;border:1.5px solid var(--border);background:var(--surface);border-radius:999px;padding:9px 16px;font:inherit;font-weight:600;font-size:14px;color:var(--text2);cursor:pointer;min-height:44px}
+  .tab[aria-selected="true"]{border-color:var(--primary);color:var(--primary);background:#1C2A47}
+  /* token card */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+  .token{padding:18px}
+  .token .head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .token .head .nm{display:flex;align-items:center;gap:10px}
+  .coin{width:36px;height:36px;border-radius:999px;background:linear-gradient(135deg,#FDE68A,#B45309);flex:none}
+  .house{background:linear-gradient(135deg,#BFDBFE,#1E3A8A)}
+  .chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:600;white-space:nowrap}
+  .chip svg{flex:none}
+  .chip.g{background:var(--green-bg);color:var(--green)}
+  .chip.y{background:var(--amber-bg);color:var(--amber)}
+  .chip.r{background:var(--red-bg);color:var(--red)}
+  .rows{margin-top:14px;border-top:1px solid var(--border)}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14.5px}
+  .row .k{color:var(--text2)}
+  .row .v{font-weight:600;text-align:right;color:var(--ink)}
+  .row .v.mono{font-weight:500}
+  .explain{font-size:13px;color:var(--text2);background:#1B2337;border-radius:8px;padding:10px 12px;margin-top:12px}
+  .flag{display:flex;gap:8px;align-items:flex-start;background:var(--red-bg);border-left:3px solid var(--red);border-radius:8px;padding:10px 12px;margin-top:12px;font-size:13.5px;color:var(--red)}
+  .okflag{background:var(--green-bg);border-left-color:var(--green);color:var(--green)}
+  .src{display:flex;justify-content:space-between;font-size:12.5px;color:var(--text2);margin-top:12px}
+  .src a{color:var(--primary)}
+  /* comparison */
+  .tablewrap{overflow-x:auto;margin-top:20px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+  th{font-family:'Lexend',sans-serif;font-weight:600;text-align:left;padding:12px 14px;border-bottom:2px solid var(--border)}
+  td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+  td:first-child,th:first-child{position:sticky;left:0;background:var(--surface);color:var(--ink);font-weight:600;box-shadow:1px 0 0 var(--border)}
+  tr:nth-child(even) td{background:#111B30}
+  tr:nth-child(even) td:first-child{background:#111B30}
+  .good{color:var(--green);font-weight:600}
+  /* form */
+  label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px;color:var(--ink)}
+  input,select{width:100%;height:48px;border:1px solid var(--border);border-radius:10px;padding:0 14px;font:inherit;background:#101A2E;color:var(--text)}
+  input:focus,select:focus{outline:3px solid rgba(147,197,253,.35);border-color:var(--primary)}
+  .btn{display:block;width:100%;min-height:48px;background:var(--cta);color:var(--on-cta);border:none;border-radius:10px;font-family:'Lexend',sans-serif;font-weight:600;font-size:16px;cursor:pointer;margin-top:18px;transition:background .2s ease-out}
+  .btn:hover{background:var(--cta-hover)}
+  .micro{font-size:13px;color:var(--text2);text-align:center;margin-top:10px}
+  .status{display:none;margin-top:12px;padding:12px;border-radius:10px;background:var(--green-bg);color:var(--green);font-weight:600;text-align:center}
+  /* sticky CTA */
+  .sticky{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 20px;box-shadow:0 -4px 16px rgba(15,23,42,.08);z-index:20}
+  .sticky a{display:flex;align-items:center;justify-content:center;min-height:48px;background:var(--cta);color:var(--on-cta);border-radius:10px;font-family:'Lexend',sans-serif;font-weight:600;text-decoration:none}
+  footer{background:#080D18;color:#CBD5E1;padding:32px 0 100px;font-size:14px}
+  footer a{color:#93C5FD}
+  footer .legal{margin-top:12px;font-size:13px;color:#94A3B8}
+  @media(min-width:768px){
+    h1{font-size:44px} h2{font-size:30px} section{padding:72px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+    .cards2{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    body{padding-bottom:0}.sticky{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="logo" href="#">Every<span>vest</span></a>
+  <span class="asof-top">Data as of <span class="mono">2026-08-10</span></span>
+  <a class="headcta" href="#join">Join the waitlist</a>
+</div></header>
+
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <div class="eyebrow">Real assets, opened to everyone</div>
+    <h1>The flexibility of crypto, anchored in the real world.</h1>
+    <p class="sub">Everyvest shows you which real assets — gold, real estate, commodities — you can actually buy as tokens on the blockchain, compares them in plain language, and guides your purchase end to end. No crypto background needed. Check us first — this is live catalog data:</p>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--green)"></span>Open to everyone</span>
+      <span><span class="dot" style="background:var(--amber)"></span>Via issuer (KYC)</span>
+      <span><span class="dot" style="background:var(--red)"></span>Restricted</span>
+    </div>
+  </div>
+  <div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-t="gold">Gold</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="re">Real estate</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="bonds">Bonds</button>
+    </div>
+
+    <div class="card token" id="t-gold">
+      <div class="head">
+        <div class="nm"><div class="coin"></div><div><h3>PAX Gold</h3><span style="font-size:13px;color:var(--text2)" class="mono">PAXG</span></div></div>
+        <span class="chip g"><svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="currentColor"/></svg>Open to everyone</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="k">Backed by</span><span class="v">Allocated gold bars, London vault</span></div>
+        <div class="row"><span class="k">Who checks</span><span class="v">Independent auditor, monthly</span></div>
+        <div class="row"><span class="k">Regulator</span><span class="v">NYDFS (US)</span></div>
+        <div class="row"><span class="k">Yearly fee</span><span class="v good">None</span></div>
+        <div class="row"><span class="k">Start from</span><span class="v mono">$50</span></div>
+      </div>
+      <div class="okflag flag"><b>✓</b> No open red flags. Last audit: <span class="mono">&nbsp;2026-07-31</span></div>
+      <div class="explain"><b>Attestation</b> — an independent accountant's periodic check that the gold is really there.</div>
+      <div class="src"><span>As of <span class="mono">2026-08-10</span></span><a href="#">Every fact → its source</a></div>
+    </div>
+
+    <div class="card token" id="t-re" hidden>
+      <div class="head">
+        <div class="nm"><div class="coin house"></div><div><h3>Single-family rental</h3><span style="font-size:13px;color:var(--text2)">Example listing · Lofty</span></div></div>
+        <span class="chip y"><svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="currentColor"/></svg>Via issuer (KYC)</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="k">What you hold</span><span class="v">Share of the LLC that owns the house</span></div>
+        <div class="row"><span class="k">Rent payout</span><span class="v">Daily, proportional</span></div>
+        <div class="row"><span class="k">How to buy</span><span class="v">Signup + ID check at issuer</span></div>
+        <div class="row"><span class="k">Start from</span><span class="v mono">$50</span></div>
+      </div>
+      <div class="explain"><b>Via issuer</b> — open to most people, but you register on the issuer's platform first. We walk you through it.</div>
+      <div class="src"><span>As of <span class="mono">2026-08-10</span></span><a href="#">Every fact → its source</a></div>
+    </div>
+
+    <div class="card token" id="t-bonds" hidden>
+      <div class="head">
+        <div class="nm"><div class="coin" style="background:linear-gradient(135deg,#E2E8F0,#475569)"></div><div><h3>US Treasuries token</h3><span style="font-size:13px;color:var(--text2)" class="mono">OUSG</span></div></div>
+        <span class="chip r"><svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="currentColor"/></svg>Restricted</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="k">Who can buy</span><span class="v">Qualified purchasers (≈$5M+ investors)</span></div>
+        <div class="row"><span class="k">Minimum</span><span class="v mono">$5,000+</span></div>
+      </div>
+      <div class="flag"><b>!</b> Not open to retail. We show it anyway — you deserve the full picture, not just what's for sale.</div>
+      <div class="src"><span>As of <span class="mono">2026-08-10</span></span><a href="#">Every fact → its source</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:8px"><div class="wrap">
+  <h2>The token vs the usual way</h2>
+  <div class="tablewrap"><table>
+    <tr><th>&nbsp;</th><th>Bank ETF</th><th>Gold token</th></tr>
+    <tr><td>Start with</td><td>Share price</td><td class="good mono">$50</td></tr>
+    <tr><td>Yearly fees</td><td>~0.4%, forever</td><td class="good">None</td></tr>
+    <tr><td>Who holds it</td><td>The fund</td><td class="good">You</td></tr>
+    <tr><td>Trade</td><td>Market hours</td><td class="good">24/7</td></tr>
+    <tr><td>Better for pension money</td><td class="good">Usually yes</td><td>Usually no — we say so</td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--text2);margin-top:10px">Orders of magnitude; verified per token. And when the ETF wins — the last row — we tell you. <a href="#" style="color:var(--primary)">Methodology</a></p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap cards2">
+  <div class="card" style="padding:20px">
+    <h3>Yes, it's on the blockchain — that's the point</h3>
+    <p class="sub" style="font-size:15px">The blockchain is what makes this possible: fractions from $50, trading 24/7, holding the asset yourself, moving it anywhere. The backing is physical — vaulted gold, deeded houses. Crypto's flexibility, reality's substance. Speculative coins with nothing behind them? Never listed here.</p>
+  </div>
+  <div class="card" style="padding:20px">
+    <h3>No "recommended" badges. Ever.</h3>
+    <p class="sub" style="font-size:15px">Facts from official documents, red flags by published rules, sources on every field. The choice stays yours.</p>
+  </div>
+  <div class="card" style="padding:20px">
+    <h3>We watch it after you buy</h3>
+    <p class="sub" style="font-size:15px">Audit stopped? Contract changed? Fees raised? Our Guardian alerts will tell you in plain language. No regulator watches for you — we do.</p>
+  </div>
+</div></section>
+
+<section id="join" style="padding-top:0"><div class="wrap">
+  <div class="card" style="padding:24px 20px;max-width:520px;margin:0 auto">
+    <h2>Get early access — free</h2>
+    <p class="sub" style="font-size:15px">At launch you'll get the full map: what's open to you, in your country, from $50.</p>
+    <form id="waitlistForm">
+      <label for="name">First name</label>
+      <input id="name" name="name" type="text" autocomplete="given-name" required>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <label for="interest">What matters most to you? <span style="font-weight:400;color:var(--text2)">(optional)</span></label>
+      <select id="interest" name="interest">
+        <option value="" selected>Choose one</option>
+        <option value="gold">Buying gold easily</option>
+        <option value="re">Income from real estate</option>
+        <option value="compare">Comparing tokens before I buy</option>
+        <option value="monitor">Alerts on assets I already hold</option>
+      </select>
+      <button class="btn" type="submit">Join the waitlist</button>
+      <p class="micro">No spam. One email at launch, then only what you ask for.</p>
+      <p class="status" id="statusMessage">Thanks! You're on the list.</p>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b style="color:#fff">Everyvest</b> — real assets, opened to everyone.</div>
+  <div style="margin-top:8px"><a href="#">Methodology</a> · <a href="#">Sources</a> · <a href="#">Contact</a></div>
+  <p class="legal">Everyvest is research, not investment advice. We are not a broker, advisor, or custodian. Sample data shown; verified per token at launch.</p>
+</div></footer>
+
+<div class="sticky"><a href="#join">Join the waitlist — free</a></div>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(tab){
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(t){t.setAttribute('aria-selected','false')});
+    tab.setAttribute('aria-selected','true');
+    ['gold','re','bonds'].forEach(function(k){document.getElementById('t-'+k).hidden = (k!==tab.dataset.t)});
+  });
+});
+document.getElementById('waitlistForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('statusMessage').style.display='block';
+  this.reset();
+});
+</script>
+</body>
+</html>

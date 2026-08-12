@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>צ&#x27;קליסט צעד 6 — הפעלת ה-waitlist</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    direction: rtl; text-align: right;
+    font-family: "Segoe UI", "Arial Hebrew", Arial, sans-serif;
+    line-height: 1.7; max-width: 820px; margin: 2rem auto; padding: 0 1.2rem;
+    color: #1a1a1a; background: #fff;
+  }
+  h1, h2, h3 { line-height: 1.35; margin: 1.4em 0 .5em; }
+  h1 { font-size: 1.7rem; border-bottom: 2px solid #e5e5e5; padding-bottom: .3em; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.1rem; }
+  p, li { unicode-bidi: plaintext; }
+  ul, ol { padding-inline-start: 1.4em; }
+  code { background: #f0f0f0; padding: .1em .35em; border-radius: 4px;
+         font-size: .92em; direction: ltr; unicode-bidi: bidi-override; }
+  bdi { unicode-bidi: isolate; }
+  a { color: #0b5cad; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e8e8; background: #1e1e1e; }
+    h1 { border-color: #333; }
+    code { background: #2b2b2b; }
+  }
+</style>
+</head>
+<body>
+<h1>צ'קליסט צעד <bdi>6</bdi> — הפעלת ה-<bdi>waitlist</bdi> (הפעולות שדורשות את חשבון הגוגל שלך)</h1>
+<p>עודכן: <bdi>12.08.2026</bdi>. הקוד כולו מוכן; נשארו רק פעולות בחשבונות שלך.<br />
+הקבצים: <code><bdi>site/index.html</bdi></code> (דף הנחיתה לייצור) · <code><bdi>apps-script/Code.gs</bdi></code> (הבקאנד).</p>
+<h2><bdi>0</bdi>. חשבון גוגל ייעודי לפרויקט (הוחלט <bdi>12.08.2026</bdi> — לעשות לפני הכול)</h2>
+<p>יוצרים חשבון <bdi>Google</bdi> חדש ייעודי (למשל <code><bdi>everyvest.app</bdi>@<bdi>gmail.com</bdi></code> — אחרי הכרעת השם, כי שם החשבון כדאי שיתאם את המוצר), ומפעילים עליו אימות דו-שלבי. <strong>כל</strong> מה שבצ'קליסט הזה — ה-<bdi>Sheet</bdi>, ה-<bdi>Apps Script</bdi>, נכס ה-<bdi>GA4</bdi> וההרשמה ל-<bdi>Netlify</bdi> — נפתח מתוך החשבון הזה, לא מהחשבון האישי. למה עכשיו: העברת בעלות על <bdi>Apps Script deployments</bdi> ונכסי <bdi>GA4</bdi> אחר כך היא כאב ראש; מייל עתידי ללקוחות ממילא חייב לצאת מכתובת עסקית (כלל "לא שולחים מהג'ימייל הפרטי" שבמדריך); וזה מפריד את הדאטה של הנרשמים מהחשבון הפרטי.</p>
+<h2>א. <bdi>Google Sheet</bdi> + <bdi>Apps Script</bdi> (כ-<bdi>10</bdi> דקות)</h2>
+<ol>
+<li>פתח קובץ <bdi>Google Sheets</bdi> חדש, קרא לו <code><bdi>everyvest-waitlist</bdi></code>. שנה את שם הגיליון (הטאב למטה) ל-<code><bdi>waitlist</bdi></code>.</li>
+<li>העתק את ה-<bdi>SPREADSHEET_ID</bdi> מכתובת הדפדפן — החלק שבין <code>/<bdi>d</bdi>/</code> לבין <code>/<bdi>edit</bdi></code>.</li>
+<li>בתפריט: תוספים ← <bdi>Apps Script</bdi>. מחק את הקוד הקיים ב-<code><bdi>Code.gs</bdi></code> והדבק את התוכן של <code><bdi>apps-script/Code.gs</bdi></code> מהפרויקט.</li>
+<li>בשורה הראשונה החלף את <code><bdi>PASTE_YOUR_SPREADSHEET_ID_HERE</bdi></code> ב-<bdi>ID</bdi> שהעתקת. שמור (<bdi>Ctrl+S</bdi>).</li>
+<li><strong>הרצה חד-פעמית:</strong> בחר בתפריט הפונקציות את <code><bdi>setupWaitlistSheet</bdi></code> ולחץ <bdi>Run</bdi>. אשר את ההרשאות (יופיע מסך "<bdi>Google</bdi> לא אימתה" — מתקדם ← המשך). בגיליון תופיע שורת הכותרות: <bdi>Timestamp</bdi>, <bdi>Username</bdi>, <bdi>Email</bdi>, <bdi>Interest</bdi>.</li>
+<li><strong>פריסה:</strong> <bdi>Deploy</bdi> ← <bdi>New deployment</bdi> ← סוג: <bdi>Web app</bdi> ← <bdi>Execute as</bdi>: <strong><bdi>Me</bdi></strong> ← <bdi>Who has access</bdi>: <strong><bdi>Anyone</bdi></strong> ← <bdi>Deploy</bdi>. העתק את כתובת ה-<bdi>Web App</bdi> (מסתיימת ב-<code>/<bdi>exec</bdi></code>).</li>
+<li>ב-<code><bdi>site/index.html</bdi></code> החלף את <code><bdi>YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL</bdi></code> בכתובת שהעתקת.</li>
+<li>בדיקה: פתח את כתובת ה-<bdi>Web App</bdi> בדפדפן — אמור להופיע <code>{"<bdi>success</bdi>":<bdi>true</bdi>,"<bdi>service</bdi>":"<bdi>Everyvest Waitlist API</bdi>"}</code>.</li>
+</ol>
+<p>הערה לעתיד: אחרי כל שינוי בקוד ה-<bdi>Apps Script</bdi> — <bdi>Deploy</bdi> ← <bdi>Manage deployments</bdi> ← עיפרון ← <bdi>Version</bdi>: <bdi>New version</bdi> ← <bdi>Deploy</bdi> (לא ליצור <bdi>deployment</bdi> חדש, כדי שהכתובת לא תתחלף).</p>
+<h2>ב. <bdi>GA4</bdi> (כ-<bdi>10</bdi> דקות)</h2>
+<ol>
+<li><bdi>https</bdi>://<bdi>analytics.google.com</bdi> ← יצירת נכס <code><bdi>Everyvest</bdi></code> (אזור זמן ישראל).</li>
+<li>פלטפורמה: אתר ← הדבק את כתובת האתר (אחרי הפריסה בסעיף ג') ← קבל <bdi>Measurement ID</bdi> שמתחיל ב-<code><bdi>G</bdi>-</code>.</li>
+<li>ב-<code><bdi>site/index.html</bdi></code> החלף את <strong>שתי</strong> ההופעות של <code><bdi>G-XXXXXXXXXX</bdi></code> ב-<bdi>ID</bdi> שלך.</li>
+<li>אחרי עלייה לאוויר: ניהול ← תצוגת נתונים ← אירועים ← סמן את <code><bdi>sign_up_waitlist</bdi></code> כאירוע מפתח (<bdi>Conversion</bdi>).</li>
+<li>בדיקת זמן אמת: דוחות ← סקירה בזמן אמת ← בצע הרשמת ניסיון ← ודא שהאירוע נספר וששורה נוספה בגיליון.</li>
+</ol>
+<h2>ג. פריסה (כ-<bdi>5</bdi> דקות)</h2>
+<ul>
+<li>הכי פשוט: <bdi>Netlify</bdi> — גרור את תיקיית <code><bdi>site</bdi>/</code> ל-<bdi>app.netlify.com</bdi> (<bdi>Deploy manually</bdi>), או חבר ריפו <bdi>GitHub</bdi>.</li>
+<li>אופציונלי: <bdi>Site configuration</bdi> ← <bdi>Change site name</bdi> לכתובת נאה (למשל <code><bdi>everyvest.netlify.app</bdi></code>).</li>
+<li>אחרי שינוי ה-<bdi>URL</bdi> ב-<bdi>GA4</bdi> (סעיף ב-<bdi>2</bdi>) — לוודא שהכתובת הסופית היא זו שהוזנה.</li>
+</ul>
+<h2>ד. בדיקת קצה-לקצה (חובה לפני הפצה)</h2>
+<ol>
+<li>הרשמה בדף החי ← שורה חדשה בגיליון + אירוע ב-<bdi>GA4 Realtime</bdi>.</li>
+<li>הרשמה עם אותו מייל שוב ← לא נוספת שורה כפולה (הטופס עדיין מציג הצלחה — זה מכוון).</li>
+<li>שני טאבים במקביל ← שתי שורות נפרדות (<bdi>LockService</bdi>).</li>
+<li>מובייל אמיתי: נטען מהר, ה-<bdi>CTA</bdi> הדביק עובד, הטופס נשלח.</li>
+</ol>
+<h2>מה כבר מטופל בקוד (לא צריך לגעת)</h2>
+<ul>
+<li>כפתור נחסם בזמן שליחה ואחרי הצלחה (מניעת רישום כפול מהצד שלנו).</li>
+<li>מניעת דובלים לפי מייל בצד השרת + <bdi>LockService</bdi> נגד תנאי מרוץ.</li>
+<li><bdi>honeypot</bdi> נגד בוטים, ולידציה בשני הצדדים, הגנה מהזרקת נוסחאות לגיליון.</li>
+<li>אירוע <code><bdi>sign_up_waitlist</bdi></code> נשלח ל-<bdi>GA4</bdi> כולל פילוח ה-<bdi>interest</bdi>.</li>
+<li>שאלת הפילוח ("מה הכי חשוב לך?") נשמרת בעמודת <bdi>Interest</bdi> — זה המדיד של פיצול הקהלים.</li>
+</ul>
+</body>
+</html>
