@@ -4,12 +4,25 @@
 
 const SPREADSHEET_ID = '1N8u1ZBgQouIZyl_8kQE_Xq1q6vJAPCRGlXr_kAutVQg';
 const SHEET_NAME = 'waitlist';
+const CONSENT_SHEET_NAME = 'users-consent';
 
 const HEADERS = [
   'Timestamp',
   'Username',
   'Email',
   'Interest'
+];
+
+const CONSENT_HEADERS = [
+  'Consent ID',
+  'Timestamp',
+  'Email',
+  'Decision',
+  'Terms Version',
+  'Source Page',
+  'Storage',
+  'Source',
+  'Status'
 ];
 
 /**
@@ -42,13 +55,23 @@ function doPost(e) {
     const username = String(data.name || '').trim();
     const email = String(data.email || '').trim().toLowerCase();
     const interest = String(data.interest || '').trim().toLowerCase();
+    const termsAccepted = data.terms === true;
+    const termsVersion = String(data.termsVersion || '').trim();
+    const sourcePage = String(data.page || '').trim().slice(0, 500);
 
     validateInput_(username, email, interest);
+
+    // Terms consent is mandatory — the form cannot be submitted without it.
+    if (!termsAccepted) {
+      throw new Error('Terms not accepted');
+    }
 
     const sheet = getWaitlistSheet_();
     ensureHeaders_(sheet);
 
     if (emailAlreadyRegistered_(sheet, email)) {
+      // Re-submission still records a fresh consent event.
+      logConsent_(email, termsVersion, sourcePage);
       return createJsonResponse_({
         success: true,
         alreadyRegistered: true
@@ -61,6 +84,8 @@ function doPost(e) {
       protectSheetCell_(email),
       protectSheetCell_(interest)
     ]);
+
+    logConsent_(email, termsVersion, sourcePage);
 
     SpreadsheetApp.flush();
 
@@ -101,6 +126,43 @@ function getWaitlistSheet_() {
     throw new Error(
       'Sheet "' + SHEET_NAME + '" was not found'
     );
+  }
+
+  return sheet;
+}
+
+/**
+ * Appends one consent record to the users-consent sheet.
+ * Creates the sheet (with headers) on first use — no manual setup needed.
+ */
+function logConsent_(email, termsVersion, sourcePage) {
+  const sheet = getOrCreateConsentSheet_();
+
+  sheet.appendRow([
+    Utilities.getUuid(),
+    new Date(),
+    protectSheetCell_(email),
+    'accepted',
+    protectSheetCell_(termsVersion || 'unknown'),
+    protectSheetCell_(sourcePage || 'unknown'),
+    'google-sheet',
+    'waitlist-form-checkbox',
+    'saved'
+  ]);
+}
+
+function getOrCreateConsentSheet_() {
+  const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = spreadsheet.getSheetByName(CONSENT_SHEET_NAME);
+
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(CONSENT_SHEET_NAME);
+    sheet
+      .getRange(1, 1, 1, CONSENT_HEADERS.length)
+      .setValues([CONSENT_HEADERS])
+      .setFontWeight('bold');
+    sheet.setFrozenRows(1);
+    sheet.getRange('B:B').setNumberFormat('yyyy-mm-dd hh:mm:ss');
   }
 
   return sheet;

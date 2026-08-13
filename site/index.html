@@ -281,6 +281,7 @@ document.querySelectorAll('.tab').forEach(function(tab){
 
 // Waitlist form → Google Apps Script (step 6 checklist: paste your Web App URL below)
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz6VfuGJo8mT9JcGLG7PfvtT_M0hgKpp4CuqikyBHPIHTBQMcO-wqBbD2xziSeMun-4Nw/exec';
+const TERMS_VERSION = '2026-08-13'; // keep in sync with the "Last updated" date on terms.html
 
 document.getElementById('waitlistForm').addEventListener('submit', function(e){
   e.preventDefault();
@@ -310,7 +311,14 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e){
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: name, email: email, interest: interest })
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      interest: interest,
+      terms: true, // checkbox is verified above — submission is blocked without it
+      termsVersion: TERMS_VERSION,
+      page: location.href
+    })
   })
   .then(function(){
     if (typeof gtag === 'function') {
