@@ -87,6 +87,9 @@
   label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px;color:var(--ink)}
   input,select{width:100%;height:48px;border:1px solid var(--border);border-radius:10px;padding:0 14px;font:inherit;background:#101A2E;color:var(--text)}
   input:focus,select:focus{outline:3px solid rgba(147,197,253,.35);border-color:var(--primary)}
+  .agree{display:flex;align-items:flex-start;gap:10px;margin-top:16px;font-weight:400;font-size:14px;color:var(--text2);cursor:pointer}
+  .agree input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--cta);cursor:pointer}
+  .agree a{color:var(--primary)}
   .btn{display:block;width:100%;min-height:48px;background:var(--cta);color:var(--on-cta);border:none;border-radius:10px;font-family:'Lexend',sans-serif;font-weight:600;font-size:16px;cursor:pointer;margin-top:18px;transition:background .2s ease-out}
   .btn:hover{background:var(--cta-hover)}
   .btn:disabled{opacity:.65;cursor:default}
@@ -245,6 +248,10 @@
         <option value="monitor">Alerts on assets I already hold</option>
       </select>
       <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+      <label class="agree" for="terms">
+        <input id="terms" name="terms" type="checkbox" required>
+        <span>I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a>, including that nothing here is binding investment advice and any action I take is at my sole responsibility.</span>
+      </label>
       <button class="btn" id="submitBtn" type="submit">Join the waitlist</button>
       <p class="micro">No spam. One email at launch, then only what you ask for.</p>
       <p class="status" id="statusMessage"></p>
@@ -254,8 +261,8 @@
 
 <footer><div class="wrap">
   <div><b style="color:#fff">Everyvest</b> — real assets, opened to everyone.</div>
-  <div style="margin-top:8px"><a href="#">Methodology</a> · <a href="#">Sources</a> · <a href="#">Contact</a></div>
-  <p class="legal">Everyvest is research, not investment advice. We are not a broker, advisor, or custodian. Sample data shown; verified per token at launch.</p>
+  <div style="margin-top:8px"><a href="#">Methodology</a> · <a href="#">Sources</a> · <a href="terms.html">Terms of Use</a> · <a href="#">Contact</a></div>
+  <p class="legal">Everyvest is research, not investment advice. We are not a broker, advisor, or custodian. Nothing on this site is a binding recommendation — the system only presents options, and any action you take is at your own judgment and sole responsibility. Sample data shown; verified per token at launch.</p>
 </div></footer>
 
 <div class="sticky"><a href="#join">Join the waitlist — free</a></div>
@@ -288,6 +295,11 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e){
   if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
     status.className = 'status err'; status.style.display = 'block';
     status.innerText = 'Please enter your name and a valid email.';
+    return;
+  }
+  if (!document.getElementById('terms').checked) {
+    status.className = 'status err'; status.style.display = 'block';
+    status.innerText = 'Please agree to the Terms of Use to join.';
     return;
   }
 
