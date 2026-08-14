@@ -62,6 +62,20 @@ Suggested subs: r/CryptoCurrency (check self-promo rules — Saturday project th
 >
 > Happy to get torn apart on the schema — what fields would you demand before trusting a gold token?
 
+## Channel 1b — Reddit, maker subs (r/SideProject, r/AlphaAndBetaUsers, r/EntrepreneurRideAlong)
+
+Builder-audience framing: the story is "I'm validating this," not the asset class. Same UTM as Reddit.
+
+> **Title:** I'm building an honest catalog of tokenized real-world assets — it also tells you what you *can't* buy
+>
+> After realizing that properly comparing two gold tokens means hours of reading legal PDFs, I started building Everyvest: a plain-language catalog of tokenized real-world assets (gold, real estate, commodities). Every token is mapped to one schema from its official documents — issuer, regulator, what actually backs it, custody, redemption terms, audit dates, fees.
+>
+> The twist: every asset gets an *accessibility* grade — open to everyone / via issuer KYC / restricted to qualified purchasers. Existing tools map market size for institutions; nobody tells a normal person what they can actually buy. Red flags are rule-based and published ("no attestation for 90+ days" flags automatically), sources are linked on every field, and the comparison table has a row for when a boring ETF is the better choice — because sometimes it is.
+>
+> Right now it's a landing page + waitlist smoke test, measuring which audience converts (crypto-native vs personal-finance) and which interest wins (gold / real estate / comparison / monitoring): https://everyvest.netlify.app?utm_source=reddit&utm_medium=social&utm_campaign=waitlist_launch
+>
+> Would love feedback on the honesty-first positioning — or on the landing page itself.
+
 ## Channel 2 — X / Twitter thread (crypto-native)
 
 > 1/ Every gold token looks identical from the outside. PAXG, XAUT — same pitch, very different fine print: issuer, regulator, vault, redemption minimums, audit cadence.

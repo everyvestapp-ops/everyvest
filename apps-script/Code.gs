@@ -133,7 +133,7 @@ function getWaitlistSheet_() {
 
 /**
  * Appends one consent record to the users-consent sheet.
- * Creates the sheet (with headers) on first use — no manual setup needed.
+ * The sheet and its header row are created on demand — no manual setup needed.
  */
 function logConsent_(email, termsVersion, sourcePage) {
   const sheet = getOrCreateConsentSheet_();
@@ -157,15 +157,44 @@ function getOrCreateConsentSheet_() {
 
   if (!sheet) {
     sheet = spreadsheet.insertSheet(CONSENT_SHEET_NAME);
-    sheet
-      .getRange(1, 1, 1, CONSENT_HEADERS.length)
-      .setValues([CONSENT_HEADERS])
-      .setFontWeight('bold');
-    sheet.setFrozenRows(1);
-    sheet.getRange('B:B').setNumberFormat('yyyy-mm-dd hh:mm:ss');
   }
 
+  ensureConsentHeaders_(sheet);
+
   return sheet;
+}
+
+/**
+ * Writes the header row if it is missing — including the case where consent
+ * rows were already appended to a sheet that had no headers (a row is then
+ * inserted above them).
+ */
+function ensureConsentHeaders_(sheet) {
+  const lastRow = sheet.getLastRow();
+
+  if (lastRow > 0) {
+    const firstCell = String(sheet.getRange(1, 1).getValue()).trim();
+    if (firstCell === CONSENT_HEADERS[0]) {
+      return;
+    }
+    sheet.insertRowBefore(1);
+  }
+
+  sheet
+    .getRange(1, 1, 1, CONSENT_HEADERS.length)
+    .setValues([CONSENT_HEADERS])
+    .setFontWeight('bold');
+  sheet.setFrozenRows(1);
+  sheet.getRange('B:B').setNumberFormat('yyyy-mm-dd hh:mm:ss');
+}
+
+/**
+ * Optional one-off: adds the header row to an existing users-consent sheet
+ * without waiting for the next signup. Safe to run more than once.
+ */
+function setupConsentSheet() {
+  getOrCreateConsentSheet_();
+  SpreadsheetApp.flush();
 }
 
 function ensureHeaders_(sheet) {
