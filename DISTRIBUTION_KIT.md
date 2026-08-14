@@ -1,6 +1,6 @@
 # DISTRIBUTION_KIT.md — Step 7 launch kit (channels, posts, UTM, measurement)
 
-Written: 2026-08-12. Ready-to-paste distribution for the waitlist smoke test. Fill in the live URL after deployment (marked `https://everyvest.netlify.app`). Voice rules apply to posts too: honest, no hype, name the blockchain plainly.
+Written: 2026-08-12. Ready-to-paste distribution for the waitlist smoke test. Fill in the live URL after deployment (marked `https://everyvestapp-ops.github.io/everyvest/`). Voice rules apply to posts too: honest, no hype, name the blockchain plainly.
 
 ## Revised channel plan (decided 2026-08-12): fresh-account reality
 
@@ -15,13 +15,13 @@ The distribution runs from brand-new accounts (dedicated project identity, no ka
 ## UTM links (one per channel — this is how we know which audience converts)
 
 ```text
-https://everyvest.netlify.app?utm_source=hackernews&utm_medium=social&utm_campaign=waitlist_launch
-https://everyvest.netlify.app?utm_source=reddit&utm_medium=social&utm_campaign=waitlist_launch
-https://everyvest.netlify.app?utm_source=indiehackers&utm_medium=social&utm_campaign=waitlist_launch
-https://everyvest.netlify.app?utm_source=telegram&utm_medium=social&utm_campaign=waitlist_launch
-https://everyvest.netlify.app?utm_source=twitter&utm_medium=social&utm_campaign=waitlist_launch
-https://everyvest.netlify.app?utm_source=linkedin&utm_medium=social&utm_campaign=waitlist_launch
-https://everyvest.netlify.app?utm_source=facebook_finance&utm_medium=social&utm_campaign=waitlist_launch
+https://everyvestapp-ops.github.io/everyvest/?utm_source=hackernews&utm_medium=social&utm_campaign=waitlist_launch
+https://everyvestapp-ops.github.io/everyvest/?utm_source=reddit&utm_medium=social&utm_campaign=waitlist_launch
+https://everyvestapp-ops.github.io/everyvest/?utm_source=indiehackers&utm_medium=social&utm_campaign=waitlist_launch
+https://everyvestapp-ops.github.io/everyvest/?utm_source=telegram&utm_medium=social&utm_campaign=waitlist_launch
+https://everyvestapp-ops.github.io/everyvest/?utm_source=twitter&utm_medium=social&utm_campaign=waitlist_launch
+https://everyvestapp-ops.github.io/everyvest/?utm_source=linkedin&utm_medium=social&utm_campaign=waitlist_launch
+https://everyvestapp-ops.github.io/everyvest/?utm_source=facebook_finance&utm_medium=social&utm_campaign=waitlist_launch
 ```
 
 ### Show HN post (Hacker News)
@@ -32,7 +32,7 @@ https://everyvest.netlify.app?utm_source=facebook_finance&utm_medium=social&utm_
 >
 > The organizing idea is an accessibility grade per asset: open to everyone / via issuer KYC / restricted to qualified purchasers. Existing tools (rwa.xyz etc.) map market size for institutions; nothing maps what a regular person can actually buy. The comparison table also has a row for when a boring ETF beats the token — because for pension money it usually does.
 >
-> Right now it's a waitlist + a live sample of the token-card format: https://everyvest.netlify.app?utm_source=hackernews&utm_medium=social&utm_campaign=waitlist_launch
+> Right now it's a waitlist + a live sample of the token-card format: https://everyvestapp-ops.github.io/everyvest/?utm_source=hackernews&utm_medium=social&utm_campaign=waitlist_launch
 >
 > Would love scrutiny on the schema — what fields would you require before trusting a gold token?
 
@@ -42,7 +42,7 @@ https://everyvest.netlify.app?utm_source=facebook_finance&utm_medium=social&utm_
 >
 > Hypothesis: ordinary people would buy tokenized gold/real estate ($50 minimums, no annual fees) if someone translated the fine print — who issues it, what backs it, when it was last audited, and whether it's even open to them. Existing data tools serve institutions.
 >
-> The trust angle is the product: rule-based red flags, sources on every field, a "when the ETF is better" row, and nothing ever "recommended." Landing page + waitlist is live, measuring conversion per channel and an interest split (gold vs real estate vs comparison vs monitoring): https://everyvest.netlify.app?utm_source=indiehackers&utm_medium=social&utm_campaign=waitlist_launch — feedback on the honesty-first positioning welcome.
+> The trust angle is the product: rule-based red flags, sources on every field, a "when the ETF is better" row, and nothing ever "recommended." Landing page + waitlist is live, measuring conversion per channel and an interest split (gold vs real estate vs comparison vs monitoring): https://everyvestapp-ops.github.io/everyvest/?utm_source=indiehackers&utm_medium=social&utm_campaign=waitlist_launch — feedback on the honesty-first positioning welcome.
 
 The two-audience experiment (open question #3): crypto channels (Reddit crypto subs, X, Telegram) vs. personal-finance channels (LinkedIn, finance Facebook groups). Compare conversion per `utm_source` **and** the Interest column split — that answers "does the ordinary person actually want this."
 
@@ -58,7 +58,7 @@ Suggested subs: r/CryptoCurrency (check self-promo rules — Saturday project th
 >
 > No "recommended" badges, no referral bias, sources linked on every field. Free while I build the first domains (gold, commodities, some real estate).
 >
-> Waitlist + a live sample card: https://everyvest.netlify.app?utm_source=reddit&utm_medium=social&utm_campaign=waitlist_launch
+> Waitlist + a live sample card: https://everyvestapp-ops.github.io/everyvest/?utm_source=reddit&utm_medium=social&utm_campaign=waitlist_launch
 >
 > Happy to get torn apart on the schema — what fields would you demand before trusting a gold token?
 
@@ -72,7 +72,7 @@ Builder-audience framing: the story is "I'm validating this," not the asset clas
 >
 > The twist: every asset gets an *accessibility* grade — open to everyone / via issuer KYC / restricted to qualified purchasers. Existing tools map market size for institutions; nobody tells a normal person what they can actually buy. Red flags are rule-based and published ("no attestation for 90+ days" flags automatically), sources are linked on every field, and the comparison table has a row for when a boring ETF is the better choice — because sometimes it is.
 >
-> Right now it's a landing page + waitlist smoke test, measuring which audience converts (crypto-native vs personal-finance) and which interest wins (gold / real estate / comparison / monitoring): https://everyvest.netlify.app?utm_source=reddit&utm_medium=social&utm_campaign=waitlist_launch
+> Right now it's a landing page + waitlist smoke test, measuring which audience converts (crypto-native vs personal-finance) and which interest wins (gold / real estate / comparison / monitoring): https://everyvestapp-ops.github.io/everyvest/?utm_source=reddit&utm_medium=social&utm_campaign=waitlist_launch
 >
 > Would love feedback on the honesty-first positioning — or on the landing page itself.
 
@@ -86,7 +86,7 @@ Builder-audience framing: the story is "I'm validating this," not the asset clas
 >
 > 4/ Radical honesty as strategy: the comparison table has a row for when the boring ETF wins. Trust is the only moat this thing has.
 >
-> 5/ Free during build. Gold + commodities first, real estate next. Waitlist: https://everyvest.netlify.app?utm_source=twitter&utm_medium=social&utm_campaign=waitlist_launch
+> 5/ Free during build. Gold + commodities first, real estate next. Waitlist: https://everyvestapp-ops.github.io/everyvest/?utm_source=twitter&utm_medium=social&utm_campaign=waitlist_launch
 
 ## Channel 3 — LinkedIn (non-crypto / personal-finance audience)
 
@@ -96,15 +96,15 @@ Builder-audience framing: the story is "I'm validating this," not the asset clas
 >
 > I'm building Everyvest to close that gap: a plain-language catalog of real-world assets on the blockchain — gold, real estate, commodities — with an honesty-first design: accessibility grades, published red-flag rules, sources on every fact, and a clear "when the regular ETF is the better choice" section. Research, not investment advice; nothing is ever "recommended."
 >
-> If "the flexibility of crypto, anchored in the real world" sounds like something you'd want vetted properly — the waitlist is open: https://everyvest.netlify.app?utm_source=linkedin&utm_medium=social&utm_campaign=waitlist_launch
+> If "the flexibility of crypto, anchored in the real world" sounds like something you'd want vetted properly — the waitlist is open: https://everyvestapp-ops.github.io/everyvest/?utm_source=linkedin&utm_medium=social&utm_campaign=waitlist_launch
 
 ## Channel 4 — Telegram groups (crypto)
 
-> Building an honest RWA catalog — every tokenized asset (PAXG, XAUT, Lofty properties, tokenized treasuries) mapped to one schema: backing, custodian, redemption, attestation dates, fees + rule-based red flags. Includes an accessibility grade: what's actually open to retail vs. qualified-purchaser-only. No shilling, no "recommended," sources on every field. Free during build → https://everyvest.netlify.app?utm_source=telegram&utm_medium=social&utm_campaign=waitlist_launch
+> Building an honest RWA catalog — every tokenized asset (PAXG, XAUT, Lofty properties, tokenized treasuries) mapped to one schema: backing, custodian, redemption, attestation dates, fees + rule-based red flags. Includes an accessibility grade: what's actually open to retail vs. qualified-purchaser-only. No shilling, no "recommended," sources on every field. Free during build → https://everyvestapp-ops.github.io/everyvest/?utm_source=telegram&utm_medium=social&utm_campaign=waitlist_launch
 
 ## Channel 5 — Personal-finance communities (Facebook/forums; adapt tone to each group's rules)
 
-> Question for the group: did you know you can get gold exposure from $50 with no annual management fee? It's held as tokens on the blockchain, backed by audited physical gold — but comparing the options (or knowing which are even open to regular people) is genuinely hard. I'm building a free tool that maps and compares these in plain language, including when a regular ETF is the better choice. Would love feedback from people who *aren't* crypto natives: https://everyvest.netlify.app?utm_source=facebook_finance&utm_medium=social&utm_campaign=waitlist_launch
+> Question for the group: did you know you can get gold exposure from $50 with no annual management fee? It's held as tokens on the blockchain, backed by audited physical gold — but comparing the options (or knowing which are even open to regular people) is genuinely hard. I'm building a free tool that maps and compares these in plain language, including when a regular ETF is the better choice. Would love feedback from people who *aren't* crypto natives: https://everyvestapp-ops.github.io/everyvest/?utm_source=facebook_finance&utm_medium=social&utm_campaign=waitlist_launch
 
 ## Measurement (48–96 hours)
 
